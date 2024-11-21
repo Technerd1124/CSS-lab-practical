@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show</title>
+    <script>
+        var Banner = ['img1.jpeg', 'img2.webp', 'img3.jpeg', 'img4.jpeg']; // Array of image paths
+        var index = 0; // Initial index
+
+        // Function to show the next image in the slideshow
+        function showBanner() {
+            if (document.images) {
+                index++;
+                if (index === Banner.length) {
+                    index = 0; // Loop back to the first image
+                }
+                document.ChangeBanner.src = Banner[index]; // Change the image
+                setTimeout(showBanner, 5000); // Call the function every 5 seconds
+            }
+        }
+        // Function to manually control the slideshow (Prev/Next buttons)
+        function showSlide(slideNO) {
+            index += slideNO; // Adjust the index by slideNO (-1 for prev, 1 for next)
+            if (index < 0) {
+                index = Banner.length - 1; // Loop to the last image if index is less than 0
+            }
+            if (index >= Banner.length) {
+                index = 0; // Loop to the first image if index exceeds array length
+            }
+            document.ChangeBanner.src = Banner[index]; // Change the image source
+        }
+    </script>
+</head>
+<body onload="showBanner()">
+    <center>
+        <img src="img1.jpeg" width="900" height="450" name="ChangeBanner" alt="Slideshow Image">
+    </center>
+    <center>
+        <input type="button" value="Prev" onclick="showSlide(-1)">
+        <input type="button" value="Next" onclick="showSlide(1)">
+    </center>
+</body>
+</html>
