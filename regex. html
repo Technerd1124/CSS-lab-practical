@@ -1,0 +1,11 @@
+1. Match Email Addresses
+
+const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+console.log(regex.test("example@domain.com")); // true
+
+
+2. Validate Phone Numbers
+
+const regex = /^\d{10}$/; // Matches exactly 10 digits
+console.log(regex.test("1234567890")); // true
+
